@@ -9,3 +9,5 @@ Note page includes 1 field notes
 
 
 [![ER Diagram](./public/images/ER%20diagram.png)]
+
+<img src="https://github.com/soumyareddygopu/Assignment-4.git/ER diagram.png" width="600"/>
