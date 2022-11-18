@@ -1,118 +1,121 @@
-const login = document.getElementById("login-form");
-const register = document.getElementById("register-Form");
-const note = document.getElementById("noteform")
+ // getUsers button 
+ document.getElementById("btn-users").addEventListener('click', getUsers);
 
-if(login) login.addEventListener('submit',loginpageFunction)
-if(register) register.addEventListener('submit',registerpageFunction)
-if(note) note.addEventListener('submit',notepageFunction)
-
-function loginpageFunction(e)
-{
-    e.preventDefault();
-    let username=document.getElementById('username').value;
-    let password=document.getElementById('password').value;
+ function getUsers() {
+  fetch("http://localhost:3000/users/")
+  .then((res)=> res.json())
+   .then((data) => console.log(data))
+   .catch((err)=> console.log(err))
+ }
 
 
-    class User{
-        constructor(username,password)
-        {
-            this.uname=username;
-            this.pword=password;
-        }
-    
-    
-    
-    getuname(){
-        return this.uname;
+
+ class User {
+    constructor(email , password) {
+      this.setEmail(email)
+      this.setPassword(password)
     }
-    setuname(newusername){
-        this.uname = username;
-    }
-    getpword(){
-        return this.pword;
-    }
-    setpword(newpassword){
-        this.pword = password
-    }
+    getEmail() { return this.email; }
+    getPassword() { return this.password; }
+    setEmail(email) { this.email = email; }
+    setPassword(password) { this.password = password; }
+  }
 
+
+  class Register {
+    constructor(email , password,firstName,lastName) {
+      this.setEmail(email)
+      this.setPassword(password)
+      this.setFirstName(firstName)
+      this.setLastName(lastName)
     }
+    getEmail() { return this.email; }
+    getPassword() { return this.password; }
+    getFirstName() { return this.firstName; }
+    getLastName() { return this.lastName; }
+    setEmail(email) { this.email = email; }
+    setPassword(password) { this.password = password; }
+    setFirstName(firstName) { this.firstName = firstName;}
+    setLastName(lastName) { this.lastName = lastName;}
+  }
 
-    const Userl=new User(username,password);
-    console.log(Userl);
 
+  class Note {
+    constructor(note) {
+      this.setNote(note)
+    }
+    getNote() { return this.note; }
+    setNote(note) { this.note = note; }
+  }
+
+
+  
+function getLoginData(){
+console.log("Fetching login data information...")
+const user = new User(document.getElementById("username").value, document.getElementById("password").value);
+console.log("The user id is : ",user.getEmail());
+console.log("The password is : ",user.getPassword() );
 }
 
-
-function registerpageFunction(e)
-{
-    e.preventDefault()
-    let fname=document.getElementById('fname').value;
-    let lname=document.getElementById('Lname').value;
-    let email=document.getElementById('email').value;
-    let password=document.getElementById('password').value;
-
-    class User{
-        constructor(fname,lname,email,password)
-        {
-            this.firstname=fname;
-            this.lastname=lname;
-            this.email=email;
-            this.password=password;
-        }
-        getemail(){
-            return this.email;
-        }
-        setemail(newemail){
-            this.email = newemail;
-        }
-        getpassword(){
-            return this.password;
-        }
-        setpassword(newpassword){
-            this.password=newpassword
-        }
-        getfirstname(){
-            return this.firstname;
-        }
-        setfirstname(newfirstname){
-            this.firstname = newfirstname;
-        }
-        getlastname(){
-            return this.lastname;
-        }
-        setlastname(newlastname){
-            this.lastname=newlastname;
-        }
-    }
-
-    const user1=new User(fname,lname,email,password);
-    console.log(user1);
+function getRegestrationsData(){
+    console.log("Fetching Register data information...")
+    const register = new Register(document.getElementById("email").value, document.getElementById("psw").value,document.getElementById("first_name").value,document.getElementById("last_name").value);
+    console.log("The email id is : ",register.getEmail());
+    console.log("The password data is : ",register.getPassword());
+    console.log("The first name data is : ",register.getFirstName());
+    
+    console.log("The last name  data is : ",register.getLastName());
+    
 }
 
-
-function notepageFunction(e)
-{
-    e.preventDefault();
-    let note=document.getElementById('note').value;
-
-    class User{
-        constructor(note)
-        {
-            this.tnotes=note;
-        }
-    
-    
-    gettnotes(){
-        return this.tnotes;
-    }
-    settnotes(note){
-        this.tnotes = note;
-    }
-   
-
-    }
-
-    const Userl=new User(note);
-    console.log(Userl);
-
+function getNoteData(){
+console.log("Fetching note data information...")
+const note = new Note(document.getElementById("note").value);
+console.log("The note data is : ",note.getNote());
 }
+/****************** */
+
+const usersBtn=document.getElementById("users-btn");
+
+if(usersBtn)usersBtn.addEventListener('click',getUsers);
+
+function getUsers(){
+    fetch("http://localhost:3000/users/")
+    .then((res)=>res.json())
+    .then((data)=>{
+        
+        let ul=document.getElementById("allUsers");
+
+        data.forEach((user)=>{
+            let li=document.createElement('li');
+            let text=document.createTextNode(user.userName);
+
+            li.appendChild(text);
+            ul.appendChild(li);
+        })
+    })
+
+    .catch((err)=>console.log(`error! ${err}`));
+}
+
+const notesBtn=document.getElementById("notes-btn");
+if(notesBtn)notesBtn.addEventListener('click',getNotes);
+
+ function getNotes(){
+     fetch("http://localhost:3000/notes/")
+     .then((res)=>res.json())
+     .then((data)=>{
+         let ul=document.getElementById("allNotes");
+
+         data.forEach((note)=>{
+             let li=document.createElement('li');
+             let text=document.createTextNode(note.noteDescription);
+             li.appendChild(text);
+             ul.appendChild(li);
+
+         })
+
+
+     })
+     .catch((err)=>console.log(`Error! ${err}`));
+ }

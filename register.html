@@ -1,5 +1,8 @@
 <html>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+      <link rel="stylesheet" href="style.css" />
       <title>
         Sign up
       </title>
@@ -54,12 +57,14 @@
     </head>
     <body>
       <section class="register">
+        <!--
         <img src="webpage.jpg" class="webpage">
             <img src="./music.jfif" class="music">
              <img src="./music.jfif" class="music">
+        -->
       </section>
       <div class="container">
-        <form>
+        <form id="register-Form">
           <nav>  
             <ul>  
             <li>  
@@ -80,26 +85,27 @@
           <p>Please fill this form to create an account</p>
           <hr />
           <label>First Name</label>
-          <input type="text" placeholder="Name" />
+          <input id="fname" type="text" placeholder="Name" />
           <br />
           <label>Last Name</label>
-          <input type="text" placeholder="Name" />
+          <input id="Lname" type="text" placeholder="Name" />
           <br />
           <label>Email Or Username</label>
-          <input type="email" placeholder="Email" />
+          <input id="email" type="email" placeholder="Email" />
           <br />
           <label>Password</label>
-          <input type="password" placeholder="Password" />
+          <input id="password" type="password" placeholder="Password" />
           <br />
           <label>Re-password</label>
           <input type="password" placeholder="Re-password" />
   
-          <button class="registerbtn">Sign Up</button>
+          <button type="submit" class="registerbtn">Sign Up</button>
         
           <div class="login">
           <p>Already have account?<a href="#">Login</a></p>
         </form>
       </div>
   </div>
+  <script src="main.js"></script>
     </body>
   </html>
