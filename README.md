@@ -9,4 +9,4 @@ Note page includes 1 field notes
 
 <img src="ER diagram.png" width="600"/>
 
-[![ER Diagram](/public/images/ER%20diagram.png)]
+
