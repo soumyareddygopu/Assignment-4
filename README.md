@@ -8,6 +8,4 @@ Register page includes 4 fields fname,lname,email and password
 Note page includes 1 field notes
 
 
-[![ER Diagram](./public/images/ER%20diagram.png)]
-
 <img src="https://github.com/soumyareddygopu/Assignment-4.git/ER diagram.png" width="600"/>
