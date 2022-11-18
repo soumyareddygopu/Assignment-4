@@ -7,5 +7,6 @@ User page includes 2 fields I.e Username and password
 Register page includes 4 fields fname,lname,email and password
 Note page includes 1 field notes
 
+<img src="ER diagram.png" width="600"/>
 
 [![ER Diagram](/public/images/ER%20diagram.png)]
