@@ -11,13 +11,13 @@
 
 
  class User {
-    constructor(email , password) {
-      this.setEmail(email)
+    constructor(Username , password) {
+      this.setEmail(Username)
       this.setPassword(password)
     }
-    getEmail() { return this.email; }
+    getUsername() { return this.Username; }
     getPassword() { return this.password; }
-    setEmail(email) { this.email = email; }
+    setUsername(Username) { this.Username = Username; }
     setPassword(password) { this.password = password; }
   }
 
@@ -53,7 +53,7 @@
 function getLoginData(){
 console.log("Fetching login data information...")
 const user = new User(document.getElementById("username").value, document.getElementById("password").value);
-console.log("The user id is : ",user.getEmail());
+console.log("The user id is : ",user.getUsernamemail());
 console.log("The password is : ",user.getPassword() );
 }
 
